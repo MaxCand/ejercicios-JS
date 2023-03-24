@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juegoteca</title>
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="./style/styles.css" />
+  </head>
+
+
+  <body class="containter">
+        <!-- NAV -->
+    <nav class="navbar mt-3">
+      <div class="container-fluid">
+        <!-- Logo -->
+          <img src="./assets/img/logo.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-center">
+        <!-- Buscador -->
+          <form class="d-flex" role="search">
+          <input class="form-control me-2" type="text" placeholder="Nombre, genero, plataforma" id="buscador">
+          </form>
+          <!-- Botin carrito -->
+          <button class="btn btn-outline-light btn-primary"  type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="verCarrito">Ver carrito <span id="contadorCarrito">0</span></button> 
+          <!-- OfCanvas -->
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasRightLabel">Carrito</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body fondoCarrito over" id="cuerpoCarrito">
+            </div>
+           
+            <h3 class="text-light total text-center">El total de su compra es de: <span id="total"></span></h3>
+         
+            <button class="btn colorBoton m-2" id="vaciarCarrito">Vaciar carrito</button>
+          </div>
+      </div>
+    </nav>
+    <hr>
+    <!-- Contenedor de productos -->
+    <div id="contenedorProductos" class="row"></div>
+<hr>
+    <footer>
+      <div>
+        <p class="text-light text-center">Todos los derechos reservados©</p>
+      </div>
+    </footer>
+
+    
+    <!-- Js -->
+    <!-- Sweet alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <!-- main.js -->
+    <script src="./app/main.js"></script>
+  </body>
+
+
+</html>

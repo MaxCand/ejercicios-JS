@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color:rgb(9, 6, 67);
+    overflow-x:hidden
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    margin: 1rem;
+    margin-left: 2rem;
+}
+
+.colorBoton {
+    color: white;
+    background-color:rgb(84, 2, 84)
+}
+
+.colorBoton:hover {
+    background-color: black;
+    color: aliceblue;
+}
+
+hr {
+    color: white;
+}
+
+.titulo {
+    font-size: 2rem;
+}
+
+.fondoCarrito {
+    background-color: rgb(24, 8, 63);
+}
+
+#buscador {
+    width: 50rem;
+}
+
+.productoEnCarrito {
+    border-left: 5px solid lightblue;
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+    margin: 5px 0;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    height: 8rem;
+    width: 24rem;
+    align-items: center;
+}
+
+
+.total {
+    background-color: rgb(24, 8, 63);
+    font-size: 1.1rem;
+}
+
+.restar {
+color: white;
+cursor: pointer;
+margin-bottom: 1rem;
+}
+
+.sumar{
+color: white;
+cursor: pointer;
+margin-bottom: 1rem;
+}
+
+
+.itemCarrito{
+    margin-right: 10px;
+}
+
+.over{
+    overflow-x:hidden
+}
