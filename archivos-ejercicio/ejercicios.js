@@ -1284,11 +1284,174 @@ console.log(calle)
 */ 
 
 //LIBRERIAS Y FRAMEWORK
-
+/*
 //SWEET ALERT
+
+//Podemos modificar el title, icon, comportamiento, poner imagen de fondo. Ver documentación
 
 const boton = document.getElementById("boton")
 boton.addEventListener("click", ()=>{
   Swal.fire("Hola mundo")//Swal es el objeto, fire el metodo. En este caso le pasamos un string, al apretar el boton saldra una alerta con ese estilo
 })
+
+//Personalizamos el sweet alert
+//Debemos seguir el formato de objeto, separando por coma las propiedades
+
+const botonDos = document.getElementById("botonDos")
+
+botonDos.addEventListener("click", ()=>{
+  Swal.fire({
+    title: "Hola comisión",//Titulo
+    text:  "Esto es un gatito",//Texto del cuerpo
+    icon:  "warning",//Icono, se puede encontrar en la documentación
+    imageUrl: "https://placekitten.com/200/286",//Imagen de fondo
+    confirmButtonText: "Aceptar",//Texto del boton
+    background: "gray",//Fondo del alert
+    backdrop: "purple",//Cambiar el color del fondo de la pantalla al activar el alert
+  })
+})
+
+//Con sweet alert tambien podemos hacer loguins y demás, esta todo en recipe gallery
+
+//Ejemplo eliminando un producto de un carrito ficticio
+
+const botonTres = document.getElementById("botonTres")
+
+let carrito = ["arroz", "fideos", "pan"]
+
+botonTres.addEventListener("click", ()=>{
+Swal.fire({//Se desestructuran los parametros del objeto, visto en clase operadores avanzados
+  title: "¿Estas seguro de eliminar los fideos?",
+  icon: "warning",
+  background: "white",
+  backdrop: "gray",
+  confirmButtonText: "Aceptar",//Boton de confirmar y el texto que contiene
+  showCancelButton: true,//Mostrar un boton de cancelar
+  cancelButtonText: "Cancelar",//Texto del boton de cancelar
+  cancelButtonColor: "red",//Color del booton de cancelar
+  confirmButtonColor: "green",//Color del boton de confirmar
+
+}).then((result) =>{
+  if(result.isConfirmed){//Si el usuario hizo click en aceptar, hacer lo siguiente:
+    carrito = carrito.filter((producto) => producto !== "fideos")//Con esto filtramos el array con todos los productos menos "fideos"
+    console.log(carrito)
+    Swal.fire({//Alerta que indica que el producto fue eliminado
+      title: "Producto eliminado",
+      icon: "success",
+      confirmButtonText: "Aceptar",
+      confirmButtonColor: "green",
+      background: "white"
+    })
+  }
+})
+})
+
+//Para saber si el usuario aceptó o canceló, tenemos que concatenar con un metodo que se llama then, explicado en linea 1334 y en clase promesas
+
+//Ahora simulamos un inicio se sesión
+
+const botonCuatro = document.getElementById("botonCuatro")
+
+botonCuatro.addEventListener("click", ()=>{
+  Swal.fire({
+    title: "Login",
+    html: `
+    <input type="text" id="email" class="swal2-input" placeholder="Email">
+    <input type="password" id="password" class="swal2-input" placeholder="Password">`,//Inyectamos html de la manera habitual
+    confirmButtonText: "Enviar",
+    showCancelButton: true,
+    cancelButtonText: "Cancelar"
+  }).then((result)=>{
+    if(result.isConfirmed){//si hizo click en el boton aceptar vamos a hacer lo siguiente: 
+        const mail = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        console.log("Email: " + mail + " Password: " +  password)
+        Swal.fire({
+          title: "Datos enviados",
+          icon: "success",
+          confirmButtonText: "Aceptar"
+        })
+    }
+  })
+})
+
+//TOASTIFY
+
+//Lo utilizamos para mostrar mensajes de notificaciones personalizados
+
+//1) Llamar a toastify y pasamos por paramtro un objeto con las propiedades que queremos modificar
+//2) Concatenamos con el metodo showToast(). para mostrar el mensaje
+
+const botonCinco = document.getElementById("botonCinco")
+botonCinco.addEventListener("click", ()=>{
+  Toastify({
+    text: "Producto agregado al carrito",//Texto de la notificación
+    duration: 3000,//Duración de la notificación
+    gravity: "top",//Posición vertical de la notificación
+    position: "right",//Posición horizontal de la notificación
+    destination: "https://google.com",//Si quiero que al darle click a la notificación me lleve a otro sitio
+    // style:{background: "green"},//si queremos darle un estilo personalizado a la notificación
+    className: "btn"//Tambien le podemos dar estilo con el nombre de la clase
+  }).showToast()//Para que se muestra la notificación, cerramos con un showToast()
+})
+
+//LUXON
+//Libreria para trabajar con fechas y horas
+//La clase principal de Luxon es DateTime. Para ser más ordenados podemos referneciarla en una varaiable global para facilitar su acceso.
+const DateTime = luxon.DateTime;
+
+//Metodo .local() Recibe parametros que van desde el año hasta los milisegundos
+
+const fechaAnioNuevo = DateTime.local(2024,1,1,00,00)
+console.log(fechaAnioNuevo)
+
+//Me devuelve un formato poco claro, si lo quiero tranformar en algo más legible puedo usar "toString()"
+console.log(fechaAnioNuevo.toString())
+
+//Metodo now() Me permite obener la fecha y hora de este momento.
+
+const fechaActual = DateTime.now()
+console.log(fechaActual.toString())
+
+//Puedo crear una fecha pasando parametros:
+
+const navidad2023 = DateTime.fromObject(
+  {day:25, hour:00, month:12}
+)
+console.log("Fecha de navidad: ")
+console.log(navidad2023.toString())
+
+//ToLocaleString() me lo muestra más amigable
+//Year, month, day, second, weekday
+console.log(fechaActual.toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY))
+
+//Tranformación
+//Me permite hacer calculos sobre fechas y horas
+
+//Sumamos días
+const fechaMasTresDias = fechaActual.plus(
+  {days:3}
+)
+console.log("Fecha más 3 días")
+console.log(fechaMasTresDias.toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY))
+
+//Para restar es igual solo que usamos minus
+
+//La clase Duration:
+
+const Duration = luxon.Duration
+
+//Podemos crear una duración pasando un objeto con los valores que queremos modificar:
+
+const duracion = Duration.fromObject(
+  {days:3, hours:5, minutes:30}
+)
+
+//A la fecha actual le sumo la duración
+
+const fechaMasDuracion = fechaActual.plus(duracion)
+console.log("Fecha más duración")
+console.log(fechaMasDuracion.toLocaleString(DateTime.DATETIME_SHORT))
+*/
+
 
