@@ -1281,6 +1281,124 @@ const gato = {
 let {duenio, raza, edad:edadGato, direccion:{calle, numero, ciudad}} = gato
 console.log(calle)
 
+const auto = {
+  marca: "Ford",
+  modelo: "Fiesta",
+  anio: 2019,
+  color: "Azul"
+}
+
+let {marca, modelo, anio, color} = auto;
+console.log(marca)
+auto.marca = "Chevrolet"
+console.log(marca)
+
+//Con la variable auxiliar no corremos riesgo de modificar la propiedad de el objeto original
+marca = "Nissan"
+console.log(marca)
+
+const alumno = {
+  nombre: "Juan",
+  edad: 23,
+  curso: "JavaScript",
+  direccion: {
+    calle: "Av. Siempreviva",
+    numero: 742,
+    ciudad: "Sprinfield"
+  }
+}
+//                        Acá desestructuramos un objeto y los objetos que tiene dentro. Sintaxis: Obj:{propiedades de obi}
+let {nombre, edad, curso, direccion:{calle, numero, ciudad}} = alumno
+
+//Desestructuración en parametros:
+
+//                     Como parametro, toma variables auxiliares generadas con la desestructuración de X objeto
+function mostrarDatos ({nombre, edad}){
+  console.log(`Hola, mi nombre es ${nombre} y mi edad es de ${edad}`)
+}
+//Luego, solo le paso como parametro el objeto del cual vienen esas propiedades desestructuradas
+mostrarDatos(alumno)
+
+//DESESTRUCTURACIÓN DE ARRAYS
+
+const numeros = [10,20,30,40,50]
+//Es similar al de objetos, solo que uso [] en vez de {}
+//Puedo poner el nombre que desee ya que respetará el orden del array según indice. Por eso "primero" es igual a 10 y "segundo" igual a 20
+let [, , tercero, cuarto, quinto] = numeros
+
+console.log(tercero)
+
+//Si me quiero saltear alguna propiedad tengo que dejar el espacio vacio
+
+//OPERADOR SPREAD
+
+//Spread de Arrays:
+
+const nombres = ["Juan", "Pedro", "Maria", "Jose"]
+console.log(nombres)
+
+//Si yo utilizo el operador spread "..."
+
+console.log(...nombres)
+
+//Esto es equivalente a:
+
+console.log(nombres[0], nombres[1], nombres[2], nombres[3])
+
+//Lo que hace el operador spread es enviar cada uno de sus elementos como parametros individuales a la función.
+
+//Ejemplo de donde lo podemos aplicar:
+
+const numeritos = [1,2,3,4,5]
+console.log(Math.max(...numeritos))
+
+//SPREAD DE OBJETOS
+
+const yerba = {
+  nombre: "Yerba",
+  precio: 250
+}
+
+//Hasta ahora, si yo queria copiar el objeto se lo asignaba a una nueva variable
+const nuevaYerba = yerba
+//Al hacer un console log vemos la misma info
+console.log(yerba)
+console.log(nuevaYerba)
+//El problema es que si yo modifico nuevaYerba tambien se modifica yerba ya que es una referencia de dicho objeto
+
+nuevaYerba.nombre = "Yerba Mate"
+console.log(yerba)
+console.log(nuevaYerba)
+
+//Si quiero copiar un objeto, la manera correcta es la siguiente:
+
+const nuevaYerba2 = {...yerba}
+console.log("Yerba: ")
+console.log(yerba)
+//Efectivamente el precio del obeto yerba no se vio modificado ya que ahora nuevaYerba2 no comparte la misma referencia
+
+//Si quiero copiar un objeto y agregarle una nueva propiedad, puedo hacerlo de la siguiente manera: 
+
+const nuevaYerba3 = {...yerba, marca:"Marolio"}
+console.log(nuevaYerba3)
+
+//Copiando arrays
+
+const a = ["a","b","c"]
+const b = [1,2,3]
+
+const nuevoArrayCombinado = [...a, ...b]
+console.log(nuevoArrayCombinado)
+
+//REST PARAMETERS
+//Tambien podemos utilizar el op spread para recibir un número indefinido de parametros en una función.
+
+function mostrarNumeros (...numeros){
+  console.log(numeros)
+}
+
+mostrarNumeros(1,2,3,4,5,6,7,8,9,10)
+mostrarNumeros(1,2,3)
 */ 
 
 //LIBRERIAS Y FRAMEWORK
