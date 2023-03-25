@@ -1262,7 +1262,6 @@ console.log(apellido)
 //Luego de la propiedad a llamar, ponemos : y el alias para llamarlo de esa manera, por ej, en vez de curso, carrrera
 
 console.log(carrera)
-*/ 
 //Qué pasa si una de las propiedades del objeto es otro objeto:
 
 const gato = {
@@ -1270,9 +1269,9 @@ const gato = {
   raza: "Felino",
   edad: 5,
   direccion: {
-      calle: "Av. siempre viva",
-      numero: 123,
-      ciudad: "Sprinfield"
+    calle: "Av. siempre viva",
+    numero: 123,
+    ciudad: "Sprinfield"
   }
 }
 
@@ -1282,5 +1281,14 @@ const gato = {
 let {duenio, raza, edad:edadGato, direccion:{calle, numero, ciudad}} = gato
 console.log(calle)
 
+*/ 
 
+//LIBRERIAS Y FRAMEWORK
+
+//SWEET ALERT
+
+const boton = document.getElementById("boton")
+boton.addEventListener("click", ()=>{
+  Swal.fire("Hola mundo")//Swal es el objeto, fire el metodo. En este caso le pasamos un string, al apretar el boton saldra una alerta con ese estilo
+})
 
