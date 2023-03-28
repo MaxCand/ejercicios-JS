@@ -1572,4 +1572,178 @@ console.log("Fecha más duración")
 console.log(fechaMasDuracion.toLocaleString(DateTime.DATETIME_SHORT))
 */
 
+//ASINCRONIA Y PROMESAS
+/*
+//Programación sincronica
+
+console.group("Programación Sincrónica")
+console.log("Primera tarea")
+console.log("Segunda tarea")
+console.groupEnd("--")
+
+//Programación asincrónica
+
+console.group("Programación asincrónica")
+
+setTimeout(()=>{
+console.log("Tarea A")
+}, 3000)
+//Sintaxis: setTimeOut(Entre parentesis pongo una función flecha, luego de la misma una "," y el tiempo en milisegundos en que quiero que se ejecute)
+setTimeout(()=>{
+  console.log("Tarea B")
+}, 2000)
+//Si ambas funciones tienen el mismo tiempo, se ejecutaran como sincronicas, es decir en orden de cascada
+
+//Ejemlo utilizando setTimeOut para modificar el color del body despues de 3 segundos
+
+setTimeout(()=>{
+document.body.style.backgroundColor = "bisque"
+}, 3000)
+
+//Incluso lo puedo utilizar con un array:
+
+for(let letra of "Hola Mundo"){
+  setTimeout(()=>{
+    console.log(letra)
+  }, 4000)
+}
+
+//Call stack
+
+//Es una lista  en donde se apilan las distintas tareas a ejecutar por nuestro programa. JS es un lenguaje de un solo hilo, por lo que se ejecuta una tarea a la vez.
+
+//Event loop
+//Es un bucle que se ejecuta constantemente y que se encarga de revisar si el call stack esta vacio. Si lo esta, entonces revisa la cola de tareas y la envia al call stack para que se ejecute.
+
+//SET INTERVAL
+
+//Tiene la misma sintaxis que el setTimeOut pero la unidad de tiempo es un intervalo para la repetición de la función asociada.
+
+setInterval(()=>{
+  console.log("Tic")
+}, 1000)
+
+//Me permite ejecutar funciones de manera reiterativa tras los milisegundos indicados, hasta que indiquemos su detención o cierre de la aplicación.
+
+//Para poder cortar esta repetición, utilizo clearInterval()
+
+let contador = 0;
+
+const interval = setInterval(()=>{//Para usar clearInterval(), debo almacenar el intervalo en una variable
+  console.log("Tuki")
+  contador++
+
+  if(contador == 5){
+    clearInterval(interval)//En esta linea le indico que cuando el contador llegue a 5, limpie el intervalo de la función interval
+  }
+
+}, 2000)
+
+
+//Ejemplo de uso de setInterval para cambiar de color el fondo del body cada 3 segundos utilizando un array de colores.
+
+const colores = ["red", "green", "yellow", "blue", "orange", "purple"]
+
+let i = 0
+const intervalDos = setInterval(()=>{
+document.body.style.backgroundColor = colores[i]
+i++;
+
+if(i== colores.length){
+  clearInterval(intervalDos)
+}
+
+
+},500)
+
+
+//Ejemplo cambiandole a un boton con el ID
+
+
+const botonIntervalo = document.getElementById("botonIntervalo")
+
+let j = 0
+
+const intervaloTres = setInterval(()=>{
+  botonIntervalo.style.backgroundColor = colores[j]  
+  j++
+
+  if(j == colores.length){
+    clearInterval(intervaloTres)
+  }
+
+}, 1000)
+
+
+//PROMESAS
+
+//Qué es una promesa?
+//Una promesa en JS es un objeto que representa un evento a futuro
+//Una promesa puede ser resuelta o rechazada
+//Es nuestra forma de trabajar con servidores
+
+//Sintaxis
+
+const falsasPromesas = () =>{
+  return new Promise ((resolve, reject) =>{
+    //Resolve = Se ejecuta cuando la promesa se cumple
+    //reject = Se ejecuta cuando la promesa no se cumple
+
+
+
+
+  })
+}
+console.log(falsasPromesas())
+//promise <pending> Esta pendiente porque todavía no hay conexión.
+
+//Puede tener 3 estados, pending, fullfilled(cuando lo logramos) y rejected(Cuando fue rechazado)
+
+class Usuario {
+  constructor(user, password){
+    this.user = user;
+    this.password = password
+  }
+}
+
+const usuario1 = new Usuario("usuarioUno", 1234)
+const usuario2 = new Usuario("usuarioDos", 1234)
+const admin = new Usuario("admin", 4321)
+
+const usuarios = [usuario1, usuario2, admin]
+
+
+const solicitarUsuarios = (estado) =>{
+  return new Promise ((resuelto, rechazado) =>{
+    if(estado == true){
+      resuelto(usuarios)
+    } else {
+      rechazado("Segui intentando, ratón!")
+    }
+  })
+}
+console.log(solicitarUsuarios(true))
+
+//THEN & CATCH
+
+//Then = Se ejecuta cuando la promesa se cumple
+//Catch = Se ejecuta cuando la promesa no se cumple
+
+//Ejemplo con then & catch tomando el loguin de usuarios
+
+solicitarUsuarios(true)
+.then((usuarios) =>{
+  console.table(usuarios)
+})
+.catch((error) =>{
+  console.error(error)
+})
+.finally(() =>{
+  console.log("Se termina el proceso, se ejecuta el finally")
+})
+*/
+
+
+
+
 
