@@ -1,28 +1,37 @@
-//Objetos
-class Juego {
-  constructor(nombre, genero, precio, plataforma, id, img, cantidad) {
-      this.nombre = nombre;
-      this.genero = genero;
-      this.precio = precio;
-      this.plataforma = plataforma;
-      this.img = img;
-      this.id = id;
-    this.cantidad = 1;
-  }
+// //Objetos
+// class Juego {
+//   constructor(nombre, genero, precio, plataforma, id, img, cantidad) {
+//       this.nombre = nombre;
+//       this.genero = genero;
+//       this.precio = precio;
+//       this.plataforma = plataforma;
+//       this.img = img;
+//       this.id = id;
+//     this.cantidad = 1;
+//   }
+// }
+
+// const carmagedon = new Juego(  "Carmagedon",  "Carreras",  4500,  "PC",  1,  "./assets/img/carmageddon.jpg");
+// const mortalKombat3 = new Juego(  "Mortal Kombat 3",  "Lucha",  3000, "Sega",  2,  "./assets/img/mortalKombat3.jpg");
+// const crash = new Juego("Crash", "Plataformas", 2500, "Playstation", 3, "./assets/img/crash.jpg");
+// const superMario64 = new Juego(  "Super Mario 64",  "Plataformas",  6000, "Nintendo",  4,  "./assets/img/superMario64.jpg");
+// const zelda = new Juego(  "Zelda: Ocarina Of Time",  "RPG",  10000,  "Nintendo",  5,  "./assets/img/zelda.jpg");
+// const finalFantasy7 = new Juego(  "Final Fantasy 7",  "RPG",  12000,  "Playstation",  6,  "./assets/img/finalFantasy7.jpg");
+// const batman = new Juego(  "Batman For Ever",  "Plataformas",  30000,"Sega",  7,  "./assets/img/batmanForEver.jpg");
+// const maxPayne = new Juego(  "Max Payne",  "Accion",  22000,"PC",  8,  "./assets/img/maxPayne.jpg");
+
+
+const productosJson = async () => {
+  const respuesta = await fetch ("../json/productos.json")
+  const data = await respuesta.json()
+  console.log(data)
 }
 
-const carmagedon = new Juego(  "Carmagedon",  "Carreras",  4500,  "PC",  1,  "./assets/img/carmageddon.jpg");
-const mortalKombat3 = new Juego(  "Mortal Kombat 3",  "Lucha",  3000, "Sega",  2,  "./assets/img/mortalKombat3.jpg");
-const crash = new Juego("Crash", "Plataformas", 2500, "Playstation", 3, "./assets/img/crash.jpg");
-const superMario64 = new Juego(  "Super Mario 64",  "Plataformas",  6000, "Nintendo",  4,  "./assets/img/superMario64.jpg");
-const zelda = new Juego(  "Zelda: Ocarina Of Time",  "RPG",  10000,  "Nintendo",  5,  "./assets/img/zelda.jpg");
-const finalFantasy7 = new Juego(  "Final Fantasy 7",  "RPG",  12000,  "Playstation",  6,  "./assets/img/finalFantasy7.jpg");
-const batman = new Juego(  "Batman For Ever",  "Plataformas",  30000,"Sega",  7,  "./assets/img/batmanForEver.jpg");
-const maxPayne = new Juego(  "Max Payne",  "Accion",  22000,"PC",  8,  "./assets/img/maxPayne.jpg");
+productosJson()
 
 //Array de juegos
 
-const listaDeJuegos = [  carmagedon,  mortalKombat3,  crash,  superMario64,  zelda,  finalFantasy7, batman, maxPayne];
+// const listaDeJuegos = [  carmagedon,  mortalKombat3,  crash,  superMario64,  zelda,  finalFantasy7, batman, maxPayne];
 
 //Carrito
 

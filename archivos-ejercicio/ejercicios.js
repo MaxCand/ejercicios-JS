@@ -1743,7 +1743,199 @@ solicitarUsuarios(true)
 })
 */
 
+//AJAX Y FETCH
+/*
+//AJAX:
+
+//Es una tecnologia que nos permite hacer peticiones asincronas a un servidor sin necesidad de recargar la página. Esta en desuso pero es bueno conocerla.
+
+//1) Vamos a conectarnos a jsonplaceholder, que es una api que nos permite practicar con peticiones AJAX.
+
+const url = "https://jsonplaceholder.typicode.com/users"
+
+//2) Vamos a crear un objeto de tipo XMLHttpRequest.
+
+const xhr = new XMLHttpRequest()
+
+//3) Creamos una función manejadora:
+
+function manejador (){
+  if(this.readyState === 4 && this.status === 200){
+  //Qué es readyState? Es un atributo que nos indica el estado de la petición. Si es 4, significa que la petición ha terminado.
+  //Qué es status? Nos indica el estado de la respuesta. Si es 200 significa que la respuesa es correcta.
+  const datos = JSON.parse(this.response)
+  //Creo una constante que se llame "datos" y que tenga como valor el objeto que me devuelve la respuesta de la petición.
+  console.log(datos)
+  mostrarUsuarios(datos)
+  }
+
+}
+
+
+//4) Ahora tengo que llamar al evento load y pasarle como parametro la función manejadora.
+
+xhr.addEventListener("load", manejador)
+
+//5) Ahora tengo que abrir la conexión con el metodo "Open" y pasarle como parametro el metodo de la petición y la url.
+
+xhr.open("GET", url)
+
+//METODOS MÁS COMUNES:
+
+//GET: Para pedir información a un servidor.
+//POST: Para enviar información a un servidor.
+//PUT: Para actualizar información en un servidor.
+//DELETE: Para eliminar información en un servidor.
+
+//6) Ahora tengo que enviar la petición con el metodo send.
+
+xhr.send()
+
+//Creamos una función para mostrar usuarios
+
+const app = document.getElementById("app")
+
+
+function mostrarUsuarios (datos){
+  datos.forEach(usuario => {
+    const li = document.createElement("li")
+    li.textContent = `${usuario.id} - ${usuario.name}`
+    app.appendChild(li)
+  })
+}
 
 
 
+//FETCH
 
+//Js nos ofrece Fetch() para hacer peticiones HTTP a algún servicio externo. Como estas peticiones son asincronicas, convenientemente 
+//fetch trabaja con promesas
+
+//Sintaxis:
+
+//fetch(url, opciones)
+
+//El primero parametro es la URL a la cual se le realiza la petición y un segundo parametro opcional de configuración.
+
+const apiFotos = "https://jsonplaceholder.typicode.com/photos"
+
+const contenedorFotos = document.getElementById("contenedorFotos")
+
+fetch(apiFotos)
+.then(respuesta => respuesta.json())
+.then((datos) =>{
+  console.log(datos)
+  mostrarFotos(datos)
+})
+.catch(error => console.log(error))
+
+//Creamos la función mostrar fotos y que reciba como parametro datos.
+
+function mostrarFotos(datos){
+  datos.forEach(foto => {
+    const img = document.createElement("img")
+    img.src = foto.thumbnailUrl
+    contenedorFotos.appendChild(img)
+  })
+}
+
+//CRIPTO YA
+
+const criptoYa = "https://criptoya.com/api/dolar"
+
+const divDolar = document.getElementById("divDolar")
+
+setInterval ( () => {
+  fetch(criptoYa)
+  .then ( response => response.json())
+  .then (({blue, ccb, ccl, mep, oficial, solidario}) => {
+    
+    divDolar.innerHTML = `
+    <h2>Tipos de dolar</h2>
+    <p>Dolar Oficial: ${oficial}</p>
+    <p>Dolar Solidario: ${solidario}</p>
+    <p>Dolar MEP: ${mep}</p>
+    <p>Dolar CCL: ${ccl}</p>
+    <p>Dolar CCB: ${ccb}</p>
+    <p>Dolar BLUE: ${blue}</p>
+    `
+    
+  })
+  .catch(error => console.error(error))
+}, 3000)
+
+//RUTAS RELATIVAS:
+
+//Nos permite trabajar con un archivo JSON de forma local.
+
+const listado = document.getElementById("listado")
+const listadoProductos = "../json/productos.json"
+
+fetch(listadoProductos)
+.then( respuesta => respuesta.json())
+.then (datos => {
+  datos.forEach ( producto => {
+    listado.innerHTML += `
+    <h2>Nombre: ${producto.nombre}</h2>
+    <p>Precio: ${producto.precio}</p>
+    <p>ID: ${producto.id}</p>
+    `
+  })    
+})
+.catch(error => console.error(error))
+.finally(() => console.log("Proceso finalizado"))
+
+*/
+
+
+//Agregar incrementador en carrito:
+/*
+Para agregar un incrementador de cantidad en el carrito, puedes modificar la función displayCart() para incluir botones de incremento y decremento para cada producto en el carrito. Aquí te muestro un ejemplo:
+
+javascript
+function displayCart() {
+  let cartItems = document.querySelector(".cart-items");
+  cartItems.innerHTML = "";
+  cart.forEach(item => {
+    let cartItem = document.createElement("div");
+    cartItem.innerHTML = `
+      <div>${item.product.name}</div>
+      <div>
+        <button onclick="decrementItem('${item.product.name}')">-</button>
+        <span>${item.quantity}</span>
+        <button onclick="incrementItem('${item.product.name}')">+</button>
+      </div>
+      <div>${item.product.price * item.quantity}</div>
+    `;
+    cartItems.appendChild(cartItem);
+  });
+  let cartTotal = document.querySelector(".cart-total");
+  cartTotal.innerHTML = `Total: ${calculateTotal()}`;
+}
+En este ejemplo, se agregan botones de decremento y de incremento para cada producto en el carrito. Los botones llaman a las funciones decrementItem() e incrementItem() respectivamente, pasando como argumento el nombre del producto. Aquí te muestro cómo podrías implementar estas funciones:
+
+javascript
+Copy code
+function decrementItem(product) {
+  cart.forEach(item => {
+    if (item.product.name === product) {
+      if (item.quantity > 1) {
+        item.quantity--;
+      } else {
+        removeFromCart(product);
+      }
+    }
+  });
+  displayCart();
+}
+
+function incrementItem(product) {
+  cart.forEach(item => {
+    if (item.product.name === product) {
+      item.quantity++;
+    }
+  });
+  displayCart();
+}
+En la función decrementItem(), se busca el producto en el carrito y se disminuye la cantidad en uno, pero si la cantidad llega a ser menor que 1, se elimina el producto del carrito usando la función removeFromCart(). En la función incrementItem(), se busca el producto en el carrito y se aumenta la cantidad en uno. Finalmente, se llama a la función displayCart() para actualizar la página web con los cambios en el carrito.
+*/

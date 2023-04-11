@@ -1,0 +1,66 @@
+[
+  {
+    "nombre": "Carmagedon",
+    "genero": "Carreras",
+    "precio": 4500,
+    "plataforma": "PC",
+    "id": 1,
+    "img": "./assets/img/carmageddon.jpg"
+  },
+  {
+    "nombre": "Mortal Kombat 3",
+    "genero": "Lucha",
+    "precio": 3000,
+    "plataforma": "Sega",
+    "id": 2,
+    "img": "./assets/img/mortalKombat3.jpg"
+  },
+  {
+    "nombre": "Crash",
+    "genero": "Plataformas",
+    "precio": 2500,
+    "plataforma": "Playstation",
+    "id": 3,
+    "img": "./assets/img/crash.jpg"
+  },
+  {
+    "nombre": "Super Mario 64",
+    "genero": "Plataformas",
+    "precio": 6000,
+    "plataforma": "Nintendo",
+    "id": 4,
+    "img": "./assets/img/superMario64.jpg"
+  },
+  {
+    "nombre": "Zelda: Ocarina Of Time",
+    "genero": "RPG",
+    "precio": 10000,
+    "plataforma": "Nintendo",
+    "id": 5,
+    "img": "./assets/img/zelda.jpg"
+  },
+  {
+    "nombre": "Final Fantasy 7",
+    "genero": "RPG",
+    "precio": 12000,
+    "plataforma": "Playstation",
+    "id": 6,
+    "img": "./assets/img/finalFantasy7.jpg"
+  },
+  {
+    "nombre": "Batman For Ever",
+    "genero": "Plataformas",
+    "precio": 30000,
+    "plataforma": "Sega",
+    "id": 7,
+    "img": "./assets/img/batmanForEver.jpg"
+  },
+  {
+    "nombre": "Max Payne",
+    "genero": "Accion",
+    "precio": 22000,
+    "plataforma": "PC",
+    "id": 8,
+    "img": "./assets/img/maxPayne.jpg"
+  }
+]
