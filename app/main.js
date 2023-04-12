@@ -9,16 +9,16 @@ fetch(url)
 
 let carrito = []
 
-// if (localStorage.getItem("carrito")){
-//   carrito = JSON.parse(localStorage.getItem("carrito"))
-// }
+if (localStorage.getItem("carrito")){
+  carrito = JSON.parse(localStorage.getItem("carrito"))
+}
 
-// document.addEventListener("DOMContentLoaded", ()=>{
-//   if (localStorage.getItem("carrito")){
-//     carrito = JSON.parse(localStorage.getItem("carrito"))
-//     mostrarCarrito()
-//   }
-// })
+document.addEventListener("DOMContentLoaded", ()=>{
+  if (localStorage.getItem("carrito")){
+    carrito = JSON.parse(localStorage.getItem("carrito"))
+    mostrarCarrito()
+  }
+})
 
 
 //Constantes index 
@@ -45,9 +45,6 @@ finalizarCompra.addEventListener("click", finalizarCompraa)
 
 vaciarCarrito.addEventListener("click", limpiarCarrito)
 
-
-
-// mostrarProductos()
 
 //FUNCIONES
 
@@ -223,67 +220,71 @@ function eliminarDelCarrito(id){
     
 
 
+
+      
+     
       
       /*
-
-    // buscador.addEventListener("keyup",filtrar)
-
-
-    const buscador = document.getElementById("buscador")
-    buscador.addEventListener("keyup", ()=>{
-      // console.log(buscador.value)
-      filtrar()
-    })    
-
-function filtrar(){
-  contenedorProductos.innerHTML = ``;
-  const texto = buscador.value
-  console.log(texto)
-
-
-}
-
-
-
-  contenedorProductos.innerHTML = ``;
-  const texto = buscador.value.toLowerCase()
-  listaDeJuegos.forEach((juego) =>{
-    
-    let nombre = juego.nombre.toLowerCase()
-    let plataforma = juego.plataforma.toLowerCase()
-    let genero = juego.genero.toLowerCase()
-    if(nombre.indexOf(texto) !== -1  || plataforma.indexOf(texto) !== -1 || genero.indexOf(texto) !== -1){
-      const div = document.createElement("div")
-      div.classList.add("col-xl-3", "col-md-6", "col-xs-12")
-      div.innerHTML = `
       
-      <div class="card" style="width: 20rem;">
-        <img src="${juego.img}" class="card-img-top" alt="${juego.nombre}">
-        <div class="card-body">
+      const buscador = document.getElementById("buscador")
+      buscador.addEventListener("keyup", ()=>{
+        console.log(buscador.value)
+        filtrar()
+      })    
+
+      buscador.addEventListener("keyup",filtrar)
+      
+      function filtrar(){
+        contenedorProductos.innerHTML = ``;
+        const texto = buscador.value
+        console.log(texto)
+        
+        
+      }
+      
+      
+      
+      contenedorProductos.innerHTML = ``;
+      const texto = buscador.value.toLowerCase()
+      listaDeJuegos.forEach((juego) =>{
+        
+        let nombre = juego.nombre.toLowerCase()
+        let plataforma = juego.plataforma.toLowerCase()
+        let genero = juego.genero.toLowerCase()
+        if(nombre.indexOf(texto) !== -1  || plataforma.indexOf(texto) !== -1 || genero.indexOf(texto) !== -1){
+          const div = document.createElement("div")
+          div.classList.add("col-xl-3", "col-md-6", "col-xs-12")
+          div.innerHTML = `
+          
+          <div class="card" style="width: 20rem;">
+          <img src="${juego.img}" class="card-img-top" alt="${juego.nombre}">
+          <div class="card-body">
           <h5 class="card-title">${juego.nombre}</h5>
           <p class="card-text">Precio: $${juego.precio}</p>
           <p class="card-text">Genero: ${juego.genero}</p>
           <p class="card-text">Plataforma: ${juego.plataforma}</p>
           <button class="btn colorBoton" id="boton${juego.id}">Agregar al carrito</button>
-        </div>
-      </div>
-      `
-      contenedorProductos.appendChild(div)
-    
-      const boton = document.getElementById(`boton${juego.id}`)
-      boton.addEventListener("click", ()=>{
-        agregarAlCarrito(juego.id)
+          </div>
+          </div>
+          `
+          contenedorProductos.appendChild(div)
+          
+          const boton = document.getElementById(`boton${juego.id}`)
+          boton.addEventListener("click", ()=>{
+            agregarAlCarrito(juego.id)
+          })
+        }
       })
-    }
-  })
-if (contenedorProductos.innerHTML === ``){
-  contenedorProductos.innerHTML = `<li>Juego no encontrado</li>`
-  mostrarProductos()
-}
-}
-*/
+      if (contenedorProductos.innerHTML === ``){
+        contenedorProductos.innerHTML = `<li>Juego no encontrado</li>`
+        mostrarProductos()
+      }
+    
 
 
-
-
-
+    */
+   
+   
+   
+   
+   
