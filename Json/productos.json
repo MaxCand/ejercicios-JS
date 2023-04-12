@@ -5,7 +5,8 @@
     "precio": 4500,
     "plataforma": "PC",
     "id": 1,
-    "img": "./assets/img/carmageddon.jpg"
+    "img": "./assets/img/carmageddon.jpg",
+    "cantidad":1
   },
   {
     "nombre": "Mortal Kombat 3",
@@ -13,7 +14,8 @@
     "precio": 3000,
     "plataforma": "Sega",
     "id": 2,
-    "img": "./assets/img/mortalKombat3.jpg"
+    "img": "./assets/img/mortalKombat3.jpg",
+    "cantidad":1
   },
   {
     "nombre": "Crash",
@@ -21,7 +23,8 @@
     "precio": 2500,
     "plataforma": "Playstation",
     "id": 3,
-    "img": "./assets/img/crash.jpg"
+    "img": "./assets/img/crash.jpg",
+    "cantidad":1
   },
   {
     "nombre": "Super Mario 64",
@@ -29,7 +32,8 @@
     "precio": 6000,
     "plataforma": "Nintendo",
     "id": 4,
-    "img": "./assets/img/superMario64.jpg"
+    "img": "./assets/img/superMario64.jpg",
+    "cantidad":1
   },
   {
     "nombre": "Zelda: Ocarina Of Time",
@@ -37,7 +41,8 @@
     "precio": 10000,
     "plataforma": "Nintendo",
     "id": 5,
-    "img": "./assets/img/zelda.jpg"
+    "img": "./assets/img/zelda.jpg",
+    "cantidad":1
   },
   {
     "nombre": "Final Fantasy 7",
@@ -45,7 +50,8 @@
     "precio": 12000,
     "plataforma": "Playstation",
     "id": 6,
-    "img": "./assets/img/finalFantasy7.jpg"
+    "img": "./assets/img/finalFantasy7.jpg",
+    "cantidad":1
   },
   {
     "nombre": "Batman For Ever",
@@ -53,7 +59,8 @@
     "precio": 30000,
     "plataforma": "Sega",
     "id": 7,
-    "img": "./assets/img/batmanForEver.jpg"
+    "img": "./assets/img/batmanForEver.jpg",
+    "cantidad":1
   },
   {
     "nombre": "Max Payne",
@@ -61,6 +68,7 @@
     "precio": 22000,
     "plataforma": "PC",
     "id": 8,
-    "img": "./assets/img/maxPayne.jpg"
+    "img": "./assets/img/maxPayne.jpg",
+    "cantidad":1
   }
 ]
