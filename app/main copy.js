@@ -112,7 +112,7 @@ function agregarAlCarrito(id, array){
       <span class="span-carrito">
       <p class="text-light">${juego.nombre}</p>
       <p class="text-light">Precio: $${juego.precio}</p>
-      <p class="text-light text-center">Cantidad: ${juego.cantidad}</p>
+      <p class="text-light text-center">Cantidad: <span class="pointer me-1 ms-2" id="decrementador${juego.id}">-</span> ${juego.cantidad}<span class="pointer ms-2" id="incrementador${juego.id}">+</span></p>
       </span>
       <div class="d-flex justify-content-center">
       <button class="btn colorBoton" id="eliminar${juego.id}">Eliminar</button>
@@ -125,10 +125,52 @@ function agregarAlCarrito(id, array){
       boton.addEventListener("click", ()=>{
         eliminarDelCarrito(juego.id)
       })
+      const decrementador = document.getElementById(`decrementador${juego.id}`)
+      decrementador.addEventListener("click", ()=>{
+        decrementar(juego.id)
+      })
+      const incrementador = document.getElementById(`incrementador${juego.id}`)
+      incrementador.addEventListener("click", ()=>{
+        incrementar(juego.id)
+      })
       contadorCarrito.innerText = carrito.length
     })
     calcularTotal()
   }
+
+//Incrementar en carrito
+
+function incrementar (id){
+  const juegoEnCarrito = carrito.find((juego) => juego.id === id)
+  juegoEnCarrito.cantidad++
+  localStorage.setItem("carrito", JSON.stringify(carrito))
+  Toastify({
+    text: `Sumaste otro ${juegoEnCarrito.nombre}!`,
+    duration: 1000,
+    gravity: "top",
+    position: "center",
+    style:{background: "rgb(21, 115, 71)"}
+  }).showToast()
+  mostrarCarrito()
+}
+
+//Decrementar en carrito
+
+function decrementar(id){
+  const juegoEnCarrito = carrito.find((juego) => juego.id === id)
+  if(juegoEnCarrito.cantidad > 1){
+  juegoEnCarrito.cantidad--
+  localStorage.setItem("carrito", JSON.stringify(carrito))
+  Toastify({
+    text: `Quitaste un ${juegoEnCarrito.nombre}!`,
+    duration: 1000,
+    gravity: "top",
+    position: "center",
+    style:{background: "rgb(198, 46, 46)"}
+  }).showToast()
+  mostrarCarrito()}
+}
+
 
   //MOSTRAMOS MENSAJE CON EL TOTAL DE LA COMPRA
 
@@ -232,73 +274,12 @@ function eliminarDelCarrito(id){
           })
       }}
     
-
-
-
-      
-     
-      
-      /*
-      
       const buscador = document.getElementById("buscador")
-      buscador.addEventListener("keyup", ()=>{
-        console.log(buscador.value)
+  
+      buscador.addEventListener("keyup",() => {
         filtrar()
-      })    
-
-      buscador.addEventListener("keyup",filtrar)
-      
-      function filtrar(){
-        contenedorProductos.innerHTML = ``;
-        const texto = buscador.value
-        console.log(texto)
-        
-        
-      }
-      
-      
-      
-      contenedorProductos.innerHTML = ``;
-      const texto = buscador.value.toLowerCase()
-      listaDeJuegos.forEach((juego) =>{
-        
-        let nombre = juego.nombre.toLowerCase()
-        let plataforma = juego.plataforma.toLowerCase()
-        let genero = juego.genero.toLowerCase()
-        if(nombre.indexOf(texto) !== -1  || plataforma.indexOf(texto) !== -1 || genero.indexOf(texto) !== -1){
-          const div = document.createElement("div")
-          div.classList.add("col-xl-3", "col-md-6", "col-xs-12")
-          div.innerHTML = `
-          
-          <div class="card" style="width: 20rem;">
-          <img src="${juego.img}" class="card-img-top" alt="${juego.nombre}">
-          <div class="card-body">
-          <h5 class="card-title">${juego.nombre}</h5>
-          <p class="card-text">Precio: $${juego.precio}</p>
-          <p class="card-text">Genero: ${juego.genero}</p>
-          <p class="card-text">Plataforma: ${juego.plataforma}</p>
-          <button class="btn colorBoton" id="boton${juego.id}">Agregar al carrito</button>
-          </div>
-          </div>
-          `
-          contenedorProductos.appendChild(div)
-          
-          const boton = document.getElementById(`boton${juego.id}`)
-          boton.addEventListener("click", ()=>{
-            agregarAlCarrito(juego.id)
-          })
-        }
       })
-      if (contenedorProductos.innerHTML === ``){
-        contenedorProductos.innerHTML = `<li>Juego no encontrado</li>`
-        mostrarProductos()
-      }
-    
+      
 
-
-    */
-   
-   
-   
-   
-   
+        //FILTRO
+       

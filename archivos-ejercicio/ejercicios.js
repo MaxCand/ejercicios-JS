@@ -1511,7 +1511,7 @@ botonCinco.addEventListener("click", ()=>{
     // style:{background: "green"},//si queremos darle un estilo personalizado a la notificación
     className: "btn"//Tambien le podemos dar estilo con el nombre de la clase
   }).showToast()//Para que se muestra la notificación, cerramos con un showToast()
-})
+}
 
 //LUXON
 //Libreria para trabajar con fechas y horas
