@@ -84,7 +84,7 @@ function agregarAlCarrito(id, array){
   const juegoEnCarrito = carrito.find((juego) => juego.id === id)
   
   if(juegoEnCarrito){
-    juego.cantidad++
+    juegoEnCarrito.cantidad++
     localStorage.setItem("carrito", JSON.stringify(carrito))
   } else {
     carrito.push(juego)
@@ -167,6 +167,12 @@ function eliminarDelCarrito(id){
   
   
   function limpiarCarrito (){
+    if(carrito.length < 1){
+      Swal.fire({
+        title: 'No hay productos en el carrito!',
+        icon: 'info',
+      })
+    } else {
     Swal.fire({
       title: 'Seguro que queres vaciar el carrito?',
       icon: 'warning',
@@ -189,12 +195,18 @@ function eliminarDelCarrito(id){
           localStorage.clear()
           contadorCarrito.innerText = carrito.length
         }
-      })}
+      })}}
       
     
 //Finalizar compra
 
       function finalizarCompraa (){
+        if(carrito.length < 1){
+          Swal.fire({
+            title: 'No hay productos en el carrito!',
+            icon: 'info',
+          })
+        } else {
         Swal.fire({
           title: 'Seguro que queres finalizar la compra?',
           icon: 'info',
@@ -218,7 +230,7 @@ function eliminarDelCarrito(id){
               contadorCarrito.innerText = carrito.length
             }
           })
-      }
+      }}
     
 
 
